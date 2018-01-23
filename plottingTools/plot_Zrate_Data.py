@@ -111,9 +111,7 @@ for fill in fills:
 	if len(cmsTimes)==0:
 		continue
 
-	print "here1"
-	print cmsRates
-
+	
 	graph_cms=ROOT.TGraphErrors(k,cmsTimes,cmsRates,cmsTimesE,cmsRatesE)
 	graph_cms.SetName("graph_cms")
 	graph_cms.SetMarkerStyle(22)
@@ -250,7 +248,7 @@ for fill in fills:
 	#print "CMS Error: "+str(integrate.quad(atlasFunc,cmsTimes[0],cmsTimes[cmsTime])[1]/integrate.quad(atlasFunc,cmsTimes[0],cmsTimes[cmsTime])[0])	
 	#print "ATLAS Error: "+str(integrate.quad(cmsFunc,cmsTimes[0],cmsTimes[cmsTime])[1]/integrate.quad(cmsFunc,cmsTimes[0],cmsTimes[cmsTime])[0])	
 
-	print ZintRatio
+	
 	
 	if len(ZintRatio)<1:
 		continue
@@ -381,10 +379,7 @@ for fill in fills:
 	for n in range(0,len(cmsXsec)):
 		cmsXsec2.append(cmsXsec[n]/(sum(cmsXsec)/len(cmsXsec)))	
 
-	print "CMS Xsec: "+str((sum(cmsXsec)/len(cmsXsec)))	
-	print cmsXsec2	
-	print cmsXsec
-	
+		
 	graph_cmsXsec2=ROOT.TGraph(len(cmsXsec),cmsTimes,cmsXsec2)
 	graph_cmsXsec2.SetName("graph_cmsXsec")
 	graph_cmsXsec2.SetTitle(suffix+" Z-Rates, Fill "+fill)
@@ -441,9 +436,8 @@ for n in range(0,len(allCMSRates)):
 for n in range(0,len(metaXsecCMS)):
 	metaXsecCMS2.append(metaXsecCMS[n]/(sum(metaXsecCMS)/len(metaXsecCMS)))	
 
-print (sum(metaXsecCMS)/len(metaXsecCMS))
 
-histo.SaveAs("histoCMS.root")
+histo.SaveAs("histo.root")
 
 graph_metaatlasXsec=ROOT.TGraph(len(metaFills),metaFills,metaXsecATLAS2)
 graph_metaatlasXsec.SetName("graph_metaXsecAtlas")
